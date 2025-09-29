@@ -32,6 +32,39 @@ public class projectManagement {
         return loadedData;
     }
 
+//    public static void listBooks(){
+//        for(ArrayList<String> book : library){
+//            System.out.println(book.get(0) + " | " + book.get(1) + " | " + book.get(2)
+//            + " | " + book.get(3) + "ISBN: " + book.get(4));
+//        }
+//    }
+
+//    public static void searchByTitle(Scanner scnr){
+//        scnr.nextLine();
+//        System.out.print("Search by title: ");
+//        String title = scnr.nextLine().toLowerCase();
+//
+//        for(ArrayList <String> book : library){
+//            if(book.get(0).toLowerCase().contains(title)){
+//                System.out.println(book.get(0) + " | " + book.get(1) + " | " + book.get(2)
+//                + " | " + book.get(3) + "ISBN: " + book.get(4));
+//            }
+//        }
+//    }
+
+//    public static void searchByAuthor(Scanner scnr){
+//        scnr.nextLine();
+//        System.out.print("Search by author: ");
+//        String author = scnr.nextLine().toLowerCase();
+//
+//        for(ArrayList <String> book : library){
+//            if(book.get(1).toLowerCase().contains(author)){
+//                System.out.println(book.get(0) + " | " + book.get(1) + " | " + book.get(2)
+//                + " | " + book.get(3) + "ISBN: " + book.get(4));
+//            }
+//        }
+//    }
+
     public static void main(String[] args) {
         library = loader();
         Scanner scnr = new Scanner(System.in);
@@ -55,7 +88,7 @@ public class projectManagement {
                 case 7:
                     break;
                 case 0:
-                    System.out.println("Exitting program");
+                    System.out.println("Exiting program");
                     break;
                 default:
                     System.out.println("Error! Input not recognized. Try again!");
