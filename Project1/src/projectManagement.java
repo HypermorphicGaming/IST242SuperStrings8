@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
 
 public class projectManagement {
     private static ArrayList<ArrayList<String>> library = new ArrayList<>();
@@ -129,7 +131,16 @@ public class projectManagement {
         }
         System.out.println("Earliest Year: " + minYear + " | Latest Year: " + latestYear);
         System.out.println("Counts by publisher: ");
+        Map<String, Integer> publisherCount = new HashMap<>();
+        for (ArrayList<String> row : library) {
+            String name = row.get(3);
+            publisherCount.put(name, publisherCount.getOrDefault(name, 0) + 1);
+        }
+        for (Map.Entry<String, Integer> entry : publisherCount.entrySet()){
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
     }
+
 
 
 
