@@ -3,41 +3,72 @@ import java.util.Scanner;
 
 public class projectManagement {
     private static ArrayList<ArrayList<String>> library = new ArrayList<>();
-    public static ArrayList<ArrayList<String>> loader(){
+    public static void loader(){
         ArrayList<String> initialData = new ArrayList<>();
-        ArrayList<ArrayList<String>> loadedData= new ArrayList<>();
+        //ArrayList<ArrayList<String>> loadedData= new ArrayList<>();
         // Book 1
-        initialData.add("Clean Code"); initialData.add("Robert C. Martin"); initialData.add("2008"); initialData.add("Prentice Hall"); initialData.add("9780132350884");
-        loadedData.add(initialData); initialData.clear();
+        ArrayList<String> book1 = new ArrayList<>();
+        book1.add("Clean Code"); 
+        book1.add("Robert C. Martin"); 
+        book1.add("2008"); 
+        book1.add("Prentice Hall"); 
+        book1.add("9780132350884");
+        library.add(book1);
         
         // Book 2
-        initialData.add("Effective Java"); initialData.add("Joshua Bloch"); initialData.add("2018"); initialData.add("Addison-Wesley"); initialData.add("9780134685991");
-        loadedData.add(initialData); initialData.clear();
+        ArrayList<String> book2 = new ArrayList<>();
+        book2.add("Effective Java"); 
+        book2.add("Joshua Bloch"); 
+        book2.add("2018"); 
+        book2.add("Addison-Wesley"); 
+        book2.add("9780134685991");
+        library.add(book2);
         
         // Book 3
-        initialData.add("Introduction to Algorithms"); initialData.add("Cormen, Leiserson, Rivest, Stein"); initialData.add("2009"); initialData.add("MIT Press"); initialData.add("9780262033848");
-        loadedData.add(initialData); initialData.clear();
+        ArrayList<String> book3 = new ArrayList<>();
+        book3.add("Introduction to Algorithms"); 
+        book3.add("Cormen, Leiserson, Rivest, Stein"); 
+        book3.add("2009"); 
+        book3.add("MIT Press"); 
+        book3.add("9780262033848");
+        library.add(book3);
         
         // Book 4
-        initialData.add("Design Patterns"); initialData.add("Gamma, Helm, Johnson, Vlissides"); initialData.add("1994"); initialData.add("Addison-Wesley"); initialData.add("9780201633610");
-        loadedData.add(initialData); initialData.clear();
+        ArrayList<String> book4 = new ArrayList<>();
+        book4.add("Design Patterns"); 
+        book4.add("Gamma, Helm, Johnson, Vlissides"); 
+        book4.add("1994"); 
+        book4.add("Addison-Wesley"); 
+        book4.add("9780201633610");
+        library.add(book4);
         
         // Book 5
-        initialData.add("Head First Java"); initialData.add("Kathy Sierra, Bert Bates"); initialData.add("2005"); initialData.add("O'Reilly"); initialData.add("9780596009205");
-        loadedData.add(initialData); initialData.clear();
+        ArrayList<String> book5 = new ArrayList<>();
+        book5.add("Head First Java"); 
+        book5.add("Kathy Sierra, Bert Bates"); 
+        book5.add("2005"); 
+        book5.add("O'Reilly"); 
+        book5.add("9780596009205");
+        library.add(book5);
         
         // Book 6
-        initialData.add("Java Concurrency in Practice"); initialData.add("Goetz et al."); initialData.add("2006"); initialData.add("Addison-Wesley"); initialData.add("9780321349606");
-        loadedData.add(initialData); initialData.clear();
-        return loadedData;
+        ArrayList<String> book6 = new ArrayList<>();
+        book6.add("Java Concurrency in Practice"); 
+        book6.add("Goetz et al."); 
+        book6.add("2006"); 
+        book6.add("Addison-Wesley"); 
+        book6.add("9780321349606");
+        library.add(book6);
     }
 
-//    public static void listBooks(){
-//        for(ArrayList<String> book : library){
-//            System.out.println(book.get(0) + " | " + book.get(1) + " | " + book.get(2)
-//            + " | " + book.get(3) + "ISBN: " + book.get(4));
-//        }
-//    }
+   public static void listBooks(){
+        for (ArrayList<String> row : library) { // Outer loop iterates through each inner ArrayList (row)
+            for (String element : row) { // Inner loop iterates through each element in the current row
+                System.out.print(element + " ");
+            }
+            System.out.println(); // New line after each row
+        }
+   }
 
 //    public static void searchByTitle(Scanner scnr){
 //        scnr.nextLine();
@@ -66,20 +97,26 @@ public class projectManagement {
 //    }
 
     public static void main(String[] args) {
-        library = loader();
+        loader();
         Scanner scnr = new Scanner(System.in);
-        System.out.println("===Menu===\n1) List all books \n2) Search by title \n3) Search by author \n4) Add a book" +
-        "\n5) Update publisher (by ISBN) \n6) Delete book (by ISBN) \n7) Show statistics (earliest/latest publication year; count of books by publisher)\n0) Exit");
-        int userInput = scnr.nextInt();
+        
+        int userInput;
         do{
+            System.out.println("===Menu===\n1) List all books \n2) Search by title \n3) Search by author \n4) Add a book" +
+        "\n5) Update publisher (by ISBN) \n6) Delete book (by ISBN) \n7) Show statistics (earliest/latest publication year; count of books by publisher)\n0) Exit");
+            userInput = scnr.nextInt();
             switch(userInput){
                 case 1:
+                    listBooks();
                     break;
                 case 2:
+                    userInput = -1;
                     break;
                 case 3:
+                    userInput = -1;
                     break;
                 case 4:
+                    userInput = -1;
                     break;
                 case 5:
                     break;
