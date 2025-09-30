@@ -100,6 +100,39 @@ public class projectManagement {
         }
     }
 
+    public static void addBook(){
+
+    }
+
+    public static void updatePublisher(){
+
+    }
+
+    public static void deleteBook(){
+
+    }
+
+    public static void showStatistics(){
+        int minYear, latestYear;
+        minYear = Integer.parseInt(library.get(0).get(2));
+        latestYear = Integer.parseInt(library.get(0).get(2));
+        for(ArrayList<String> publishYear : library){
+
+            if (Integer.parseInt(publishYear.get(2))<minYear){
+                minYear = Integer.parseInt(publishYear.get(2));
+            };
+        }
+        for(ArrayList<String> publishYear : library){
+            if (Integer.parseInt(publishYear.get(2))>latestYear){
+                latestYear = Integer.parseInt(publishYear.get(2));
+            }
+        }
+        System.out.println("Earliest Year: " + minYear + " | Latest Year: " + latestYear);
+        System.out.println("Counts by publisher: ");
+    }
+
+
+
     public static void main(String[] args) {
         loader();
         Scanner scnr = new Scanner(System.in);
@@ -127,6 +160,7 @@ public class projectManagement {
                 case 6:
                     break;
                 case 7:
+                    showStatistics();
                     break;
                 case 0:
                     System.out.println("Exiting program");
