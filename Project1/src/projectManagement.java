@@ -62,39 +62,43 @@ public class projectManagement {
     }
 
    public static void listBooks(){
-        for (ArrayList<String> row : library) { // Outer loop iterates through each inner ArrayList (row)
-            for (String element : row) { // Inner loop iterates through each element in the current row
-                System.out.print(element + " ");
+        for (ArrayList<String> row : library) {
+            for (String element : row) {
+                if (row.indexOf(element)!=4){
+                    System.out.print(element + " | ");
+                } else{
+                    System.out.print(element);
+                }
             }
-            System.out.println(); // New line after each row
+            System.out.println();
         }
    }
 
-//    public static void searchByTitle(Scanner scnr){
-//        scnr.nextLine();
-//        System.out.print("Search by title: ");
-//        String title = scnr.nextLine().toLowerCase();
-//
-//        for(ArrayList <String> book : library){
-//            if(book.get(0).toLowerCase().contains(title)){
-//                System.out.println(book.get(0) + " | " + book.get(1) + " | " + book.get(2)
-//                + " | " + book.get(3) + "ISBN: " + book.get(4));
-//            }
-//        }
-//    }
+    public static void searchByTitle(){
+        Scanner scnr = new Scanner(System.in);
+        System.out.print("Search by title: ");
+        String title = scnr.nextLine().toLowerCase();
 
-//    public static void searchByAuthor(Scanner scnr){
-//        scnr.nextLine();
-//        System.out.print("Search by author: ");
-//        String author = scnr.nextLine().toLowerCase();
-//
-//        for(ArrayList <String> book : library){
-//            if(book.get(1).toLowerCase().contains(author)){
-//                System.out.println(book.get(0) + " | " + book.get(1) + " | " + book.get(2)
-//                + " | " + book.get(3) + "ISBN: " + book.get(4));
-//            }
-//        }
-//    }
+        for(ArrayList <String> book : library){
+            if(book.get(0).toLowerCase().contains(title)){
+                System.out.println(book.get(0) + " | " + book.get(1) + " | " + book.get(2)
+                + " | " + book.get(3) + " | ISBN: " + book.get(4));
+            }
+        }
+    }
+
+    public static void searchByAuthor(){
+        Scanner scnr = new Scanner(System.in);
+        System.out.print("Search by author: ");
+        String author = scnr.nextLine().toLowerCase();
+
+        for(ArrayList <String> book : library){
+            if(book.get(1).toLowerCase().contains(author)){
+                System.out.println(book.get(0) + " | " + book.get(1) + " | " + book.get(2)
+                + " | " + book.get(3) + "ISBN: " + book.get(4));
+            }
+        }
+    }
 
     public static void main(String[] args) {
         loader();
@@ -110,10 +114,10 @@ public class projectManagement {
                     listBooks();
                     break;
                 case 2:
-                    userInput = -1;
+                    searchByTitle();
                     break;
                 case 3:
-                    userInput = -1;
+                    searchByAuthor();
                     break;
                 case 4:
                     userInput = -1;
