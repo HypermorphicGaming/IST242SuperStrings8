@@ -111,18 +111,7 @@ public class projectManagement {
     }
 
     public static void deleteBook(){
-        Scanner scnr = new Scanner(System.in);
-        System.out.print("Enter the book's ISBN: ");
-        String isbn = scnr.nextLine();
-
-        for(int i = 0; i < library.size(); i++){
-            ArrayList<String> book = library.get(i);
-            if(book.get(4).equals(isbn)){
-                library.remove(i);
-                break;
-            }
-        }
-
+       
     }
 
     public static void showStatistics(){
