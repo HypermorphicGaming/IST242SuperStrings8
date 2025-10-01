@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class Book {
+    private String title;
+    private String author;
+    private int year;
+    private String publisher;
+    private String isbn;
+
+    public Book(String title, String author, int year, String publisher, String isbn) {
+        this.title = title;
+        this.author = author;
+        this.year = year;
+        this.publisher = publisher;
+        this.isbn = isbn;
+    }
+
+    public String toString() {
+        return title + " | " + author + " | " + year + " | " + publisher + " | ISBN: " + isbn;
+    }
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("=== Add Book ===");
+
+        System.out.print("Title: ");
+        String title = input.nextLine();
+
+        System.out.print("Author: ");
+        String author = input.nextLine();
+
+        System.out.print("Year (e.g., 2002): ");
+        int year = input.nextInt();
+        input.nextLine(); // clear the newline after reading int
+
+        System.out.print("Publisher: ");
+        String publisher = input.nextLine();
+
+        System.out.print("ISBN (10 or 13 digits; dashes allowed): ");
+        String isbn = input.nextLine();
+
+        Book book = new Book(title, author, year, publisher, isbn);
+
+        System.out.println("\nAdded: " + book);
+    }
+}
