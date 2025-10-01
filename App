@@ -1,0 +1,63 @@
+import java.util.Scanner;
+
+public class App {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        Library lib = new Library();
+        lib.load();
+
+        int c = -1;
+        while (c != 0) {
+            System.out.println("\n1) List  2) Title  3) Author  4) Add  5) Update  6) Delete  7) Stats  0) Exit");
+            String s = in.nextLine().trim();
+            if (!s.matches("\\d")) { System.out.println("Invalid"); continue; }
+            c = Integer.parseInt(s);
+
+            if (c == 1) {
+                lib.list();
+
+            } else if (c == 2) {
+                System.out.print("Title search: ");
+                lib.searchTitle(in.nextLine());
+
+            } else if (c == 3) {
+                System.out.print("Author search: ");
+                lib.searchAuthor(in.nextLine());
+
+            } else if (c == 4) {
+                System.out.println("=== Add Book ===");
+                System.out.print("Title: ");   String t = in.nextLine();
+                System.out.print("Author: ");  String a = in.nextLine();
+                System.out.print("Year (1400-2100): ");
+                int y;
+                try { y = Integer.parseInt(in.nextLine().trim()); }
+                catch (Exception e) { System.out.println("Bad year."); continue; }
+                System.out.print("Publisher: "); String p = in.nextLine();
+                System.out.print("ISBN (10 or 13 digits; dashes ok): "); String i = in.nextLine();
+
+                boolean ok = lib.add(t,a,y,p,i);
+                System.out.println(ok ? "Added." : "Not added (failed validation or duplicate ISBN).");
+
+            } else if (c == 5) {
+                System.out.print("ISBN to update: ");
+                String i = in.nextLine();
+                System.out.print("New publisher: ");
+                String np = in.nextLine();
+                System.out.println(lib.updatePublisher(i,np) ? "Updated." : "Not updated (ISBN not found or bad input).");
+
+            } else if (c == 6) {
+                System.out.print("ISBN to delete: ");
+                String i = in.nextLine();
+                System.out.println(lib.delete(i) ? "Deleted." : "Not deleted (ISBN not found).");
+
+            } else if (c == 7) {
+                lib.stats();
+
+            } else if (c == 0) {
+                System.out.println("Bye.");
+            } else {
+                System.out.println("Invalid");
+            }
+        }
+    }
+}
