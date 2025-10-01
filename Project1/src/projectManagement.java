@@ -10,55 +10,55 @@ public class projectManagement {
         //ArrayList<ArrayList<String>> loadedData= new ArrayList<>();
         // Book 1
         ArrayList<String> book1 = new ArrayList<>();
-        book1.add("Clean Code"); 
-        book1.add("Robert C. Martin"); 
-        book1.add("2008"); 
-        book1.add("Prentice Hall"); 
+        book1.add("Clean Code");
+        book1.add("Robert C. Martin");
+        book1.add("2008");
+        book1.add("Prentice Hall");
         book1.add("9780132350884");
         library.add(book1);
-        
+
         // Book 2
         ArrayList<String> book2 = new ArrayList<>();
-        book2.add("Effective Java"); 
-        book2.add("Joshua Bloch"); 
-        book2.add("2018"); 
-        book2.add("Addison-Wesley"); 
+        book2.add("Effective Java");
+        book2.add("Joshua Bloch");
+        book2.add("2018");
+        book2.add("Addison-Wesley");
         book2.add("9780134685991");
         library.add(book2);
-        
+
         // Book 3
         ArrayList<String> book3 = new ArrayList<>();
-        book3.add("Introduction to Algorithms"); 
-        book3.add("Cormen, Leiserson, Rivest, Stein"); 
-        book3.add("2009"); 
-        book3.add("MIT Press"); 
+        book3.add("Introduction to Algorithms");
+        book3.add("Cormen, Leiserson, Rivest, Stein");
+        book3.add("2009");
+        book3.add("MIT Press");
         book3.add("9780262033848");
         library.add(book3);
-        
+
         // Book 4
         ArrayList<String> book4 = new ArrayList<>();
-        book4.add("Design Patterns"); 
-        book4.add("Gamma, Helm, Johnson, Vlissides"); 
-        book4.add("1994"); 
-        book4.add("Addison-Wesley"); 
+        book4.add("Design Patterns");
+        book4.add("Gamma, Helm, Johnson, Vlissides");
+        book4.add("1994");
+        book4.add("Addison-Wesley");
         book4.add("9780201633610");
         library.add(book4);
-        
+
         // Book 5
         ArrayList<String> book5 = new ArrayList<>();
-        book5.add("Head First Java"); 
-        book5.add("Kathy Sierra, Bert Bates"); 
-        book5.add("2005"); 
-        book5.add("O'Reilly"); 
+        book5.add("Head First Java");
+        book5.add("Kathy Sierra, Bert Bates");
+        book5.add("2005");
+        book5.add("O'Reilly");
         book5.add("9780596009205");
         library.add(book5);
-        
+
         // Book 6
         ArrayList<String> book6 = new ArrayList<>();
-        book6.add("Java Concurrency in Practice"); 
-        book6.add("Goetz et al."); 
-        book6.add("2006"); 
-        book6.add("Addison-Wesley"); 
+        book6.add("Java Concurrency in Practice");
+        book6.add("Goetz et al.");
+        book6.add("2006");
+        book6.add("Addison-Wesley");
         book6.add("9780321349606");
         library.add(book6);
     }
@@ -107,11 +107,22 @@ public class projectManagement {
     }
 
     public static void updatePublisher(){
+        Scanner scnr = new Scanner(System.in);
+        System.out.print("Enter the ISBN: ");
+        String isbn = scnr.nextLine();
 
+        for(ArrayList<String> book : library){
+            if(book.get(4).equals(isbn)){
+                System.out.print("Enter new publisher: ");
+                String publisher = scnr.nextLine();
+                book.set(3, publisher);
+                break;
+            }
+        }
     }
 
     public static void deleteBook(){
-       
+
     }
 
     public static void showStatistics(){
@@ -147,7 +158,7 @@ public class projectManagement {
     public static void main(String[] args) {
         loader();
         Scanner scnr = new Scanner(System.in);
-        
+
         int userInput;
         do{
             System.out.println("===Menu===\n1) List all books \n2) Search by title \n3) Search by author \n4) Add a book" +
@@ -167,6 +178,7 @@ public class projectManagement {
                     userInput = -1;
                     break;
                 case 5:
+                    updatePublisher();
                     break;
                 case 6:
                     deleteBook();
