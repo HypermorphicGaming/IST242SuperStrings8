@@ -1,13 +1,8 @@
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class projectManagement {
     private static ArrayList<ArrayList<String>> library = new ArrayList<>();
     public static void loader(){
-        ArrayList<String> initialData = new ArrayList<>();
-        //ArrayList<ArrayList<String>> loadedData= new ArrayList<>();
         // Book 1
         ArrayList<String> book1 = new ArrayList<>();
         book1.add("Clean Code");
@@ -103,7 +98,62 @@ public class projectManagement {
     }
 
     public static void addBook(){
+        ArrayList<String> newBook = new ArrayList<>();
+        Scanner input = new Scanner(System.in);
 
+        System.out.println("=== Add Book ===");
+
+        System.out.print("Title: ");
+        String title = input.nextLine();
+        newBook.add(title);
+
+        System.out.print("Author: ");
+        String author = input.nextLine();
+        newBook.add(author);
+
+        System.out.print("Year (e.g., 2002): ");
+        int year;
+        year = input.nextInt();
+        if(year<1400||year>2100){
+            System.out.println("Year out of bounds.");
+            return;
+        }
+        input.nextLine();
+        newBook.add("" + year);
+        
+        System.out.print("Publisher: ");
+        String publisher = input.nextLine();
+        newBook.add(publisher);
+
+        System.out.print("ISBN (10 or 13 digits; dashes allowed): ");
+        String userISBN = input.nextLine();
+        String[] isbnCorrected = userISBN.split("");
+        int isbn = 0;
+        for (int i = 0; i <isbnCorrected.length; i++){
+            if(!isbnCorrected[i].equals("-")&&!isbnCorrected[i].equals(" ")){
+                isbn ++;
+            }
+            
+        }
+        if (isbn==10||isbn==13){
+            ArrayList<String> isbns = new ArrayList<>();
+            for (int i = 0; i < library.size(); i++){
+                isbns.add(library.get(i).get(4));
+            }
+
+            if(!isbns.contains(userISBN)){
+                newBook.add(userISBN);
+
+                library.add(newBook);
+
+                System.out.println("\nAdded: " + newBook.get(0) + " | " + newBook.get(1) + " | " + newBook.get(2) + " | " + newBook.get(3) + " | " + newBook.get(4));
+            }else{
+                System.out.println("Error, ISBN not unique.");
+            }
+        }else{
+            System.out.println("Error, ISBN not valid; Try again");
+        }
+        
     }
 
     public static void updatePublisher(){
@@ -122,7 +172,17 @@ public class projectManagement {
     }
 
     public static void deleteBook(){
+        Scanner scnr = new Scanner(System.in);
+        System.out.print("Enter the book's ISBN: ");
+        String isbn = scnr.nextLine();
 
+        for(int i = 0; i < library.size(); i++){
+            ArrayList<String> book = library.get(i);
+            if(book.get(4).equals(isbn)){
+                library.remove(i);
+                break;
+            }
+        }
     }
 
     public static void showStatistics(){
@@ -153,8 +213,6 @@ public class projectManagement {
     }
 
 
-
-
     public static void main(String[] args) {
         loader();
         Scanner scnr = new Scanner(System.in);
@@ -175,7 +233,7 @@ public class projectManagement {
                     searchByAuthor();
                     break;
                 case 4:
-                    userInput = -1;
+                    addBook();
                     break;
                 case 5:
                     updatePublisher();
